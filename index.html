@@ -57,7 +57,11 @@
       <div class="modal-panel meeting-panel"><div class="modal-kicker">EMERGENCY CONCLAVE / LOWER FOUNDRY</div><div class="meeting-top"><div><h2>WHO'S THE SABOTEUR?</h2><p>Talk is cheap. Your vote is not.</p></div><div id="meeting-timer">00:20</div></div><div id="meeting-reason" class="meeting-reason">A body was discovered.</div><div id="vote-options" class="vote-options"></div><div id="vote-result" class="vote-result hidden"></div><div class="modal-foot"><span>ONE VOTE PER CREWMATE</span><span>CHOOSE CAREFULLY</span></div></div>
     </section>
     <section id="end-screen" class="screen hidden"><div class="end-content"><div id="end-kicker" class="eyebrow">ROUND COMPLETE</div><h2 id="end-title">THE FOUNDRY<br><span>STANDS</span></h2><p id="end-description">The crew restored the systems and made it out.</p><button id="restart-button" class="primary-button">PLAY ANOTHER ROUND <span>↻</span></button><div class="end-stats" id="end-stats"></div></div></section>
-    <div id="mobile-controls" class="hidden"><div class="touch-pad"><button data-move="forward">▲</button><div><button data-move="left">◀</button><button data-move="back">▼</button><button data-move="right">▶</button></div></div><div class="touch-actions"><button id="touch-use">USE</button><button id="touch-report">REPORT</button></div></div>
+    <div id="mobile-controls" class="hidden" aria-label="Touch controls">
+      <div class="stick-control" aria-label="Move"><span class="stick-label">MOVE</span><div id="move-stick" class="move-stick"><i id="stick-knob"></i></div></div>
+      <div class="touch-actions"><button id="touch-use" aria-label="Use or interact">USE</button><button id="touch-report" aria-label="Report a body">REPORT</button><button id="touch-ability" aria-label="Emergency or sabotage">ALARM</button></div>
+      <div class="look-hint">DRAG TO LOOK</div>
+    </div>
   </main>
   <script type="module" src="game.js"></script>
 </body>
