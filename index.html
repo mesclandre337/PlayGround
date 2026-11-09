@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <meta name="theme-color" content="#101513" />
+  <title>Brassworks: Last Round</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main id="game-shell">
+    <canvas id="game-canvas"></canvas>
+    <div class="film-grain"></div>
+    <div class="vignette"></div>
+    <section id="title-screen" class="screen visible">
+      <div class="title-brand"><span class="brand-mark">✣</span> THE BRASSWORKS <span class="brand-year">EST. 1899</span></div>
+      <div class="title-content">
+        <p class="eyebrow">A SOCIAL DEDUCTION SURVIVAL GAME</p>
+        <h1>LAST<br><span>ROUND</span></h1>
+        <p class="title-deck">One saboteur. Five crewmates. No way out but together.</p>
+        <button id="start-button" class="primary-button">ENTER THE FOUNDRY <span>→</span></button>
+        <div class="title-controls"><span>W A S D <i>MOVE</i></span><b>·</b><span>MOUSE <i>LOOK</i></span><b>·</b><span>E <i>INTERACT</i></span></div>
+      </div>
+      <div class="title-footer"><span>GUILD SECURITY DIVISION</span><span>ROUND 01 / 01</span></div>
+      <div class="title-stamp">CLASSIFIED<br>STEAM DIVISION</div>
+    </section>
+    <section id="hud" class="hidden">
+      <header class="topbar">
+        <div class="hud-brand"><span>✣</span> BRASSWORKS <small>/ LOWER FOUNDRY</small></div>
+        <div class="round-clock"><span class="live-dot"></span><span id="timer">02:30</span><small>ROUND TIME</small></div>
+        <button id="map-toggle" aria-label="Toggle map">⌖ <span>MAP</span></button>
+      </header>
+      <div class="left-hud">
+        <div class="objective-card"><div class="card-label"><span class="tiny-gear">⚙</span> YOUR ORDERS <span class="live-tag">LIVE</span></div><div id="objective">Restore the foundry. Stay with the crew.</div><div class="task-meter"><div id="task-meter-fill"></div></div><div class="task-count"><span id="task-count">0 / 4</span><span>FOUNDRY SYSTEMS</span></div></div>
+        <div class="crew-card"><div class="card-label">CREW STATUS <span id="crew-alive">06 ACTIVE</span></div><div id="crew-list"></div></div>
+      </div>
+      <div class="right-hud">
+        <div id="mini-map" class="mini-map"><div class="map-title">SITE PLAN <span>N ↑</span></div><div id="map-inner"></div><div class="map-legend"><i class="legend-you"></i> YOU <i class="legend-crew"></i> CREW</div></div>
+        <div id="role-chip" class="role-chip"><span class="role-icon">◈</span><span><b id="role-name">CREWMATE</b><small id="role-sub">KEEP THE BOILER RUNNING</small></span></div>
+      </div>
+      <div class="bottom-hud">
+        <div class="bottom-left"><span class="keycap">WASD</span> MOVE <span class="keycap">SHIFT</span> SPRINT</div>
+        <div id="interaction-hint" class="interaction-hint hidden"><span class="keycap">E</span> <b>INTERACT</b></div>
+        <div class="bottom-right"><button id="report-button" class="action-button"><span>⚑</span> REPORT <kbd>R</kbd></button><button id="ability-button" class="action-button"><span>◈</span> <b id="ability-label">EMERGENCY</b> <kbd>Q</kbd></button></div>
+      </div>
+      <div id="crosshair"><i></i><i></i><i></i><i></i></div>
+      <div id="toast" class="toast"></div>
+      <div id="alert-banner" class="alert-banner hidden"></div>
+    </section>
+    <section id="task-screen" class="modal-screen hidden">
+      <div class="modal-panel task-panel"><div class="modal-kicker">FOUNDRY SYSTEMS / MAINTENANCE</div><button class="close-modal" data-close>×</button><h2 id="task-title">PRESSURE REGULATOR</h2><p id="task-description">Set the pressure inside the safe zone.</p><div id="task-game"></div><div class="modal-foot"><span>FIELD MANUAL <b>07-B</b></span><span>ESC TO CLOSE</span></div></div>
+    </section>
+    <section id="meeting-screen" class="modal-screen hidden">
+      <div class="modal-panel meeting-panel"><div class="modal-kicker">EMERGENCY CONCLAVE / LOWER FOUNDRY</div><div class="meeting-top"><div><h2>WHO'S THE SABOTEUR?</h2><p>Talk is cheap. Your vote is not.</p></div><div id="meeting-timer">00:20</div></div><div id="meeting-reason" class="meeting-reason">A body was discovered.</div><div id="vote-options" class="vote-options"></div><div id="vote-result" class="vote-result hidden"></div><div class="modal-foot"><span>ONE VOTE PER CREWMATE</span><span>CHOOSE CAREFULLY</span></div></div>
+    </section>
+    <section id="end-screen" class="screen hidden"><div class="end-content"><div id="end-kicker" class="eyebrow">ROUND COMPLETE</div><h2 id="end-title">THE FOUNDRY<br><span>STANDS</span></h2><p id="end-description">The crew restored the systems and made it out.</p><button id="restart-button" class="primary-button">PLAY ANOTHER ROUND <span>↻</span></button><div class="end-stats" id="end-stats"></div></div></section>
+    <div id="mobile-controls" class="hidden"><div class="touch-pad"><button data-move="forward">▲</button><div><button data-move="left">◀</button><button data-move="back">▼</button><button data-move="right">▶</button></div></div><div class="touch-actions"><button id="touch-use">USE</button><button id="touch-report">REPORT</button></div></div>
+  </main>
+  <script type="module" src="game.js"></script>
+</body>
+</html>
